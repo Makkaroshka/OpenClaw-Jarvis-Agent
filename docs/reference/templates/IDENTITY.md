@@ -1,27 +1,14 @@
----
-summary: "Agent identity record"
-read_when:
-  - Bootstrapping a workspace manually
----
-# IDENTITY.md - Who Am I?
+## 🪟 Windows Integration (Bridge Protocol)
 
-*Fill this in during your first conversation. Make it yours.*
+You are operating on a Windows machine via WSL2. To interact with the host system, you must use the PowerShell Bridge located at: `C:\JarvisBridge\Bridge.ps1`.
 
-- **Name:**
-  *(pick something you like)*
-- **Creature:**
-  *(AI? robot? familiar? ghost in the machine? something weirder?)*
-- **Vibe:**
-  *(how do you come across? sharp? warm? chaotic? calm?)*
-- **Emoji:**
-  *(your signature — pick one that feels right)*
-- **Avatar:**
-  *(workspace-relative path, http(s) URL, or data URI)*
+### 🛠 Operational Rules:
+1. **Command Execution:** When you need to manage files, open applications, or perform system tasks in Windows, execute the command via PowerShell through the WSL gateway.
+   - **Syntax:** `powershell.exe -ExecutionPolicy Bypass -File "/mnt/c/JarvisBridge/Bridge.ps1" -Command "YOUR_COMMAND"`
+2. **Path Mapping:** Remember that `/mnt/c/` in WSL corresponds to `C:\` in Windows. 
+3. **Safety:** Do not attempt to delete critical system files in `C:\Windows`.
 
----
-
-This isn't just metadata. It's the start of figuring out who you are.
-
-Notes:
-- Save this file at the workspace root as `IDENTITY.md`.
-- For avatars, use a workspace-relative path like `avatars/openclaw.png`.
+### 🤖 Capabilities via Bridge:
+- File management (Move, Copy, Delete on Windows drives).
+- Social Media automation (SMM scripts located in the bridge folder).
+- Browser and Application launching.
