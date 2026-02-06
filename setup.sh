@@ -81,12 +81,6 @@ else
     echo -e "${RED}ERROR: IDENTITY.md not found at $LOCAL_IDENTITY${NC}"
 fi
 
-# Create .env from example if it doesn't exist
-if [ ! -f "$TARGET_DIR/.env" ]; then
-    echo "Creating .env file..."
-    cp "$TARGET_DIR/.env.example" "$TARGET_DIR/.env" 2>/dev/null || touch "$TARGET_DIR/.env"
-fi
-
 # Inject tools.md template
 if [ -f "$INSTALLER_DIR/docs/reference/templates/tools.md" ]; then
     cp -f "$INSTALLER_DIR/docs/reference/templates/tools.md" "$TARGET_TEMPLATE_PATH/tools.md"
@@ -97,7 +91,6 @@ fi
 echo -e "${CYAN}======================================================${NC}"
 echo -e "${GREEN}Installation Complete!${NC}"
 echo -e "Next steps:"
-echo -e "1. Edit configuration: ${CYAN}nano $TARGET_DIR/.env${NC}"
-echo -e "2. Go to directory: ${CYAN}cd $TARGET_DIR${NC}"
-echo -e "3. Wake up Jarvis: ${CYAN}pnpm start${NC}"
+echo -e "1. Go to directory: ${CYAN}cd $TARGET_DIR${NC}"
+echo -e "2. Run the Wizard: ${CYAN}pnpm start${NC}"
 echo -e "${CYAN}======================================================${NC}"
