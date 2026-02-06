@@ -18,7 +18,7 @@ sudo apt install -y git curl unzip
 # Install Node.js if not present
 if ! command -v node &> /dev/null; then
     echo "Node.js not found. Installing..."
-    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
     sudo apt install -y nodejs
 else
     echo "Node.js is already installed."
