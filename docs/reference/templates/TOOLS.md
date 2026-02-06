@@ -1,46 +1,18 @@
----
-summary: "Workspace template for TOOLS.md"
-read_when:
-  - Bootstrapping a workspace manually
----
+## 🛠 Windows System Tools (via Bridge)
 
-# TOOLS.md - Local Notes
+### execute_windows_command
+Use this tool to interact with the Windows host machine. All commands are routed through the PowerShell Bridge.
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+**Parameters:**
+- `command`: The specific action to perform (e.g., "open notepad", "list files in Documents", "run smm_post_script").
 
-## What Goes Here
-
-Things like:
-
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
-
-## Examples
-
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+**Usage Example (Internal Logic):**
+When the user asks to "Open Chrome", the agent should construct the following:
+`powershell.exe -ExecutionPolicy Bypass -File "/mnt/c/JarvisBridge/Bridge.ps1" -Command "start chrome"`
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+### 📂 File Management (Host)
+- **Tool:** `manage_windows_files`
+- **Description:** Access, move, or delete files on C:/ drive.
+- **Path Mapping:** Always translate WSL paths (e.g., `/mnt/c/Users/`) to Windows paths (`C:\Users\`) before sending to Bridge.
