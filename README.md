@@ -35,7 +35,7 @@ The original OpenClaw is a powerful terminal-based agent. However, running it on
 
 ```bash
 # Clone this extension repository
-git clone [https://github.com/Makkaroshka/OpenClaw-Jarvis-Extension.git](https://github.com/Makkaroshka/OpenClaw-Jarvis-Extension.git)
+git clone https://github.com/Makkaroshka/OpenClaw-Jarvis-Extension.git
 
 # Enter the directory
 cd OpenClaw-Jarvis-Extension
@@ -44,19 +44,17 @@ cd OpenClaw-Jarvis-Extension
 chmod +x setup.sh
 ./setup.sh
 
-⚙️ How to Start
+### ⚙️ How to Start
 
-After installation, go to the created folder and start your agent:
-Bash
+**After installation, go to the created folder and start your agent:**
 
 cd ~/openclaw_jarvis
 # Edit .env to add your API Keys (Telegram, OpenAI/Anthropic)
 nano .env 
 # Start the agent
 pnpm start
-
 🏆 Credits
 
     Core & Logic: OpenClaw Team.
 
-    Windows Bridge & Installer: Makkaroshka.
+    Windows Bridge & Installer: Makkaroshka
