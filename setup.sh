@@ -23,7 +23,6 @@ else
     echo "Node.js is already installed."
 fi
 
-# Install pnpm (OpenClaw preferred manager)
 if ! command -v pnpm &> /dev/null; then
     echo "Installing pnpm..."
     sudo npm install -g pnpm
@@ -36,54 +35,43 @@ echo -e "${GREEN}[2/5] Downloading OpenClaw Core to $TARGET_DIR...${NC}"
 if [ -d "$TARGET_DIR" ]; then
     echo "Target directory already exists. Skipping clone."
 else
-    # Clone official repo
     git clone https://github.com/openclaw/openclaw.git "$TARGET_DIR"
 fi
 
 cd "$TARGET_DIR"
-echo "Installing project dependencies (this may take a minute)..."
+echo "Installing project dependencies..."
 pnpm install
 
 # 3. Setting up Windows Bridge
 echo -e "${GREEN}[3/5] Deploying Windows Bridge...${NC}"
-
-# Path in Windows (via WSL mount)
 WIN_PATH="/mnt/c/JarvisBridge"
+mkdir -p "$WIN_PATH"
 
-if [ ! -d "$WIN_PATH" ]; then
-    echo "Creating directory C:\JarvisBridge..."
-    mkdir -p "$WIN_PATH"
-fi
-
-# We are currently in TARGET_DIR, need to go back to installer dir to get scripts
 INSTALLER_DIR=$OLDPWD 
 
 if [ -d "$INSTALLER_DIR/windows_scripts" ]; then
-    echo "Copying Bridge scripts to Windows host..."
     cp "$INSTALLER_DIR/windows_scripts/"* "$WIN_PATH/"
+    echo "Bridge scripts copied to C:\JarvisBridge"
 else
-    echo -e "${RED}ERROR: 'windows_scripts' folder not found in the installer directory!${NC}"
+    echo -e "${RED}ERROR: 'windows_scripts' folder not found!${NC}"
 fi
 
-# 4. Injecting Identity & Configs
-echo -e "${GREEN}[4/5] Injecting Jarvis Identity & Protocols...${NC}"
+# 4. Injecting Identity & Configs (UPDATED PATH)
+echo -e "${GREEN}[4/5] Injecting Jarvis Identity into Templates...${NC}"
 
-# Path for the agent's identity file
-AGENT_PATH="$TARGET_DIR/agents/main/agent"
-mkdir -p "$AGENT_PATH"
+# Путь к шаблонам в новом OpenClaw
+TEMPLATE_PATH="$TARGET_DIR/docs/reference/templates"
 
 if [ -f "$INSTALLER_DIR/config_templates/IDENTITY.md" ]; then
-    cp "$INSTALLER_DIR/config_templates/IDENTITY.md" "$AGENT_PATH/IDENTITY.md"
-    echo "Custom Identity installed."
+    # Перезаписываем стандартный шаблон
+    cp -f "$INSTALLER_DIR/config_templates/IDENTITY.md" "$TEMPLATE_PATH/IDENTITY.md"
+    echo "Custom IDENTITY.md injected into $TEMPLATE_PATH"
 else
-    echo -e "${RED}WARNING: Custom IDENTITY.md not found.${NC}"
+    echo -e "${RED}WARNING: Custom IDENTITY.md not found in config_templates folder.${NC}"
 fi
 
-# Create .env from example if it doesn't exist
 if [ ! -f "$TARGET_DIR/.env" ]; then
-    echo "Creating .env file..."
     cp .env.example "$TARGET_DIR/.env" 2>/dev/null || touch "$TARGET_DIR/.env"
-    echo -e "${CYAN}NOTE: Please update $TARGET_DIR/.env with your API keys later.${NC}"
 fi
 
 # 5. Finalize
