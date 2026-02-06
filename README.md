@@ -51,8 +51,6 @@ chmod +x setup.sh
 ```bash
 cd ~/openclaw_jarvis
 
-# Edit .env to add your API Keys (Telegram, OpenAI/Anthropic)
-nano .env 
 # Start the agent
 pnpm start
 ```
@@ -109,8 +107,6 @@ chmod +x setup.sh
 
 cd ~/openclaw_jarvis
 
-# Отредактируйте .env, добавив свои ключи API
-nano .env 
 # Запуск агента
 pnpm start
 ```
