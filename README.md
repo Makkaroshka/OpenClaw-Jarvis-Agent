@@ -38,7 +38,7 @@ The original OpenClaw is a powerful terminal-based agent. However, running it on
 git clone https://github.com/Makkaroshka/OpenClaw-Jarvis-Agent.git
 
 # Enter the directory
-cd OpenClaw-Jarvis-Extension
+cd OpenClaw-Jarvis-Agent
 
 # Run the magic installer
 chmod +x setup.sh
@@ -95,7 +95,7 @@ Windows Bridge & Installer: [Makkaroshka](https://github.com/Makkaroshka)
 git clone https://github.com/Makkaroshka/OpenClaw-Jarvis-Agent.git
 
 # Заходим в папку
-cd OpenClaw-Jarvis-Extension
+cd OpenClaw-Jarvis-Agent
 
 # Запускаем магический установщик
 chmod +x setup.sh
