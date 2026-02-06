@@ -149,6 +149,11 @@ fi
 if [ ! -f "$TARGET_DIR/.env" ]; then
     echo "Creating .env file..."
     cp .env.example "$TARGET_DIR/.env" 2>/dev/null || touch "$TARGET_DIR/.env"
+# another template:
+if [ -f "$INSTALLER_DIR/docs/reference/templates/tools.md" ]; then
+    cp -f "$INSTALLER_DIR/docs/reference/templates/tools.md" "$TARGET_TEMPLATE_PATH/tools.md"
+    echo -e "${GREEN}✅ tools.md injected into $TARGET_TEMPLATE_PATH${NC}"
+fi
 
 # 5. Finalize
 echo -e "${CYAN}======================================================${NC}"
