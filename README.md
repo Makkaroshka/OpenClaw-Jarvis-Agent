@@ -35,7 +35,7 @@ The original OpenClaw is a powerful terminal-based agent. However, running it on
 
 ```bash
 # Clone this extension repository
-git clone https://github.com/Makkaroshka/OpenClaw-Jarvis-Extension.git
+git clone https://github.com/Makkaroshka/OpenClaw-Jarvis-Agent.git
 
 # Enter the directory
 cd OpenClaw-Jarvis-Extension
@@ -92,7 +92,7 @@ Windows Bridge & Installer: [Makkaroshka](https://github.com/Makkaroshka)
 
 ```bash
 # Скачиваем репозиторий расширения
-git clone [https://github.com/Makkaroshka/OpenClaw-Jarvis-Extension.git](https://github.com/Makkaroshka/OpenClaw-Jarvis-Extension.git)
+git clone https://github.com/Makkaroshka/OpenClaw-Jarvis-Agent.git
 
 # Заходим в папку
 cd OpenClaw-Jarvis-Extension
